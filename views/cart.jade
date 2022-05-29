@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  h1 cart
+  - var total = 0;
+    table.table 
+      thead 
+        th Name 
+        th Price 
+        th Action
+      tbody 
+        each item in cart 
+          - total += Number(item.price)
+          tr 
+            td=item.name
+            td=item.price
+            td 
+              a(href="/products/cart/remove/"+item._id, class="btn btn-danger") Remove
+      tfoot 
+        tr 
+          td Total 
+          td=total
+             
+        
